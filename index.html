@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<title>ayrtonaraujo.net</title>
+<link rel="stylesheet" media="all" href="assets/terminal.css?v=1">
+</head>
+<body>
+
+<aside class="help hidden">
+  <section>
+    <div>
+      <span onclick="toggleHelp()" id="close">x</span>
+      <h2>Keyboard shortcuts</h2>
+      <div class="shortcuts">
+        <p><strong>&lt;ctrl&gt; + s</strong> : Toggle CRT monitor flicker effect</p>
+        <p><strong>&lt;esc&gt;</strong> : toggle this help menu</p>
+      </div>
+    </div>
+  </section>
+</aside>
+
+<!--<div class="crt top"></div>-->
+<div class="interlace"></div>
+<div id="container"></div>
+<!--<div class="crt bottom"></div>-->
+
+<script src="js/terminal.js?v=1"></script>
+<script>
+function toggleHelp() {
+  document.querySelector('.help').classList.toggle('hidden');
+  document.body.classList.toggle('dim');
+}
+
+(function() {
+  var term = new Terminal('container');
+  term.initFS(false, 1024 * 1024);
+
+  if (document.location.hash) {
+    var theme = document.location.hash.substring(1).split('=')[1];
+    term.setTheme(theme);
+  } else if (localStorage.theme) {
+    term.setTheme(localStorage.theme);
+  }
+
+  document.body.addEventListener('keydown', function(e) {
+    if (e.keyCode == 27) { // Esc
+      toggleHelp();
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  }, false);
+})();
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-25585026-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
