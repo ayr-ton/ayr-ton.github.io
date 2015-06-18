@@ -16,7 +16,7 @@ util.getDocHeight = function() {
 var Terminal = Terminal || function(containerId) {
   window.URL = window.URL || window.webkitURL;
 
-  const VERSION_ = '0.6.0';
+  const VERSION_ = '0.6.1';
   const CMDS_ = [
     'blog', 'clear', 'help', 'theme', 'version', 
 	  'who' 
@@ -180,7 +180,7 @@ var Terminal = Terminal || function(containerId) {
           break;
         case 'help':
           output('<div class="ls-files">' + '<br>' + CMDS_.join('<br>') + '</div>');
-          output('<p>There\'s some other available commands. Use your imagination :-).</p>');
+          output('<p>There\'s some other available commands. Use your imagination :-)</p>');
           break;
         case 'init':
           if (worker_) {
@@ -292,7 +292,7 @@ var Terminal = Terminal || function(containerId) {
       var transEnd_ = function(e) {
         var iframe = document.createElement('iframe');
         iframe.id = 'fsn';
-        iframe.src = 'http://blog.ayr-ton.net/';
+        iframe.src = 'http://blog.ayrtonaraujo.net/';
 
         fsn_ = body.insertBefore(iframe, body.firstElementChild);
 
